@@ -1,0 +1,31 @@
+{
+  "name": "fctroll",
+  "version": "1.0.0",
+  "description": "The backend server and apis for the fctroll football platform which is an a.i driven platform to build memes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRABU/fc-troll-backend.git"
+  },
+  "keywords": [
+    "football",
+    "a.i"
+  ],
+  "author": "Md. Fazle Rabbi, CSE, UAP",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheRABU/fc-troll-backend/issues"
+  },
+  "homepage": "https://github.com/TheRABU/fc-troll-backend#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.15.0",
+    "nodemon": "^3.1.10"
+  }
+}
