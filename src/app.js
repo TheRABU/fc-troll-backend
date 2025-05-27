@@ -1,16 +1,19 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const app = express();
 
 const imageGenerationRouter = require("./routes/imageGenerationRouter");
 
+// body parser configuration
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 /// image generation route
-app.use("/api/generate-image", imageGenerationRouter);
+app.use("/api", imageGenerationRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is running sir!!" });

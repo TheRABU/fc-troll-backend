@@ -1,7 +1,11 @@
 const express = require("express");
-const { generateImageFromText } = require("../controllers/imageController");
+const {
+  generateImage,
+  suggestKeywords,
+} = require("../controllers/imageController.js");
 const imageRouter = express.Router();
 
-imageRouter.post("/", generateImageFromText);
+imageRouter.post("/generate-image", generateImage);
+imageRouter.post("/suggest-keywords", suggestKeywords);
 
 module.exports = imageRouter;
