@@ -1,11 +1,10 @@
 const { Schema, model } = require("mongoose");
-const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
+      // required: [true, "Name is required"],
       trim: true,
     },
     email: {
@@ -27,9 +26,12 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
+      // required: [true, "Password is required"],
       // set: (v) => bcrypt.hashSync(v, bcrypt.genSaltSync(10)),
     },
+    // photoURL: {
+    //   type: String,
+    // },
     role: {
       type: String,
       default: "user",

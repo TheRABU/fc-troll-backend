@@ -6,6 +6,7 @@ const app = express();
 
 const imageGenerationRouter = require("./routes/imageGenerationRouter");
 const jwtRouter = require("../src/routes/jwtRouter");
+const userRouter = require("./routes/userRouter");
 
 // body parser configuration
 app.use(bodyParser.json());
@@ -15,7 +16,8 @@ app.use(express.urlencoded({ extended: true }));
 
 /// image generation route
 app.use("/api", imageGenerationRouter);
-app.use("/api", jwtRouter);
+// app.use("/api", jwtRouter);
+app.use("/api", userRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is running sir!!" });

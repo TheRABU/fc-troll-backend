@@ -1,30 +1,23 @@
 const jwt = require("jsonwebtoken");
 
-const verifyToken = async (req, res, next) => {
+const verifyToken = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ message: "No token, authorization denied" });
+  }
+
+  const token = authHeader.split(" ")[1];
+  if (!token) {
+    return res.status(401).json({ message: "No token, authorization denied" });
+  }
+
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader) {
-      return res.status(401).send({ message: "Authorization token missing" });
-    }
-
-    const token = authHeader.split(" ")[1];
-    if (!token) {
-      console.log(
-        "Token missing from authorization header in verify token middleware"
-      );
-      return res.status(401).send({ message: "Authorization token missing" });
-    }
-
-    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-      if (err) {
-        console.log("Token verification failed:", err.message);
-        return res.status(403).json({ message: "Failed to identify token" });
-      }
-      req.decoded = decoded;
-      next();
-    });
-  } catch (error) {
-    console.log("Error at verifyTokenController::", error.message);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    next();
+  } catch (err) {
+    console.error("Token verification failed:", err.message);
+    res.status(401).json({ message: "Token is not valid" });
   }
 };
 
