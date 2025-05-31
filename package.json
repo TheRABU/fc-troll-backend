@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "The backend server and apis for the fctroll football platform which is an a.i driven platform to build memes.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",

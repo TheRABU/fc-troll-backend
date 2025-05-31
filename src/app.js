@@ -1,12 +1,14 @@
-const express = require("express");
-require("dotenv").config();
-const cors = require("cors");
-const bodyParser = require("body-parser");
+import express from "express";
+import dotenv from "dotenv";
+dotenv.config();
+import cors from "cors";
+
+import bodyParser from "body-parser";
 const app = express();
 
-const imageGenerationRouter = require("./routes/imageGenerationRouter");
-const jwtRouter = require("../src/routes/jwtRouter");
-const userRouter = require("./routes/userRouter");
+import imageGenerationRouter from "./routes/imageGenerationRouter.js";
+import jwtRouter from "../src/routes/jwtRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 // body parser configuration
 app.use(bodyParser.json());
@@ -37,4 +39,4 @@ app.get("/", (req, res) => {
 //   });
 // });
 
-module.exports = app;
+export default app;

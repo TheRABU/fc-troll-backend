@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
-const User = require("../models/Usermodel");
-const jwt = require("jsonwebtoken");
+import mongoose from "mongoose";
+import User from "../models/Usermodel.js";
+import jwt from "jsonwebtoken";
 
 const generateToken = (payload) => {
   return jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "7d" });
 };
 
-const registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
   try {
     const user = req.body;
     // the password will be verified by firebase!
@@ -53,5 +53,3 @@ const registerUser = async (req, res) => {
     throw new error();
   }
 };
-
-module.exports = { registerUser };

@@ -1,11 +1,12 @@
-const express = require("express");
-const {
+import express from "express";
+import {
   generateImage,
   getImagesofUser,
-} = require("../controllers/imageController.js");
+} from "../controllers/imageController.js";
+
 const imageRouter = express.Router();
 
 imageRouter.post("/generate-image/:email", generateImage);
 imageRouter.get("/get-image/:email", getImagesofUser);
 
-module.exports = imageRouter;
+export default imageRouter;

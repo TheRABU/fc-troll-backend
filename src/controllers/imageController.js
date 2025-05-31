@@ -1,9 +1,9 @@
-const { GoogleGenAI, Modality } = require("@google/genai");
-const User = require("../models/Usermodel.js");
-const Image = require("../models/Imagemodel.js");
-const { uploadImageToCloudinary } = require("../utils/cloudinary.js");
+import { GoogleGenAI, Modality } from "@google/genai";
+import User from "../models/Usermodel.js";
+import Image from "../models/Imagemodel.js";
+import { uploadImageToCloudinary } from "../utils/cloudinary.js";
 
-const generateImage = async (req, res) => {
+export const generateImage = async (req, res) => {
   try {
     const { userPrompt, imageType, userPreference } = req.body;
     const email = req.params.email;
@@ -85,7 +85,7 @@ const generateImage = async (req, res) => {
   }
 };
 
-const getImagesofUser = async (req, res) => {
+export const getImagesofUser = async (req, res) => {
   const email = req.params.email;
   console.log(email);
   try {
@@ -107,5 +107,3 @@ const getImagesofUser = async (req, res) => {
       .json({ error: "Could not find any images", details: error.message });
   }
 };
-
-module.exports = { generateImage, getImagesofUser };

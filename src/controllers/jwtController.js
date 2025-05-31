@@ -1,6 +1,6 @@
-const { jwt } = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
-const generateToken = async (req, res, next) => {
+export const generateToken = async (req, res, next) => {
   try {
     const user = req.body;
     const token = jwt.sign(user, process.env.JWT_SECRET, {
@@ -12,5 +12,3 @@ const generateToken = async (req, res, next) => {
     next(error);
   }
 };
-
-module.exports = { generateToken };
