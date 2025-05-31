@@ -1,14 +1,13 @@
-import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
+import express from "express";
 import cors from "cors";
-
-import bodyParser from "body-parser";
-const app = express();
-
 import imageGenerationRouter from "./routes/imageGenerationRouter.js";
 import jwtRouter from "../src/routes/jwtRouter.js";
 import userRouter from "./routes/userRouter.js";
+import bodyParser from "body-parser";
+
+const app = express();
 
 // body parser configuration
 app.use(bodyParser.json());
