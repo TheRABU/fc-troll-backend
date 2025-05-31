@@ -36,6 +36,10 @@ const userSchema = new Schema(
       type: String,
       default: "user",
     },
+    generatedImages: {
+      type: Schema.Types.ObjectId,
+      ref: "Image",
+    },
     isBanned: {
       type: Boolean,
       default: false,
@@ -62,5 +66,5 @@ const userSchema = new Schema(
 //   next();
 // });
 
-const User = model("Users", userSchema);
+const User = model("User", userSchema);
 module.exports = User;

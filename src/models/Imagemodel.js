@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, mongoose } = require("mongoose");
 
 const imageSchema = new Schema(
   {
@@ -8,12 +8,12 @@ const imageSchema = new Schema(
     },
     email: {
       type: String,
-      ref: "Users",
+      ref: "User",
     },
   },
   { timestamps: true }
 );
 
-const Image = model("Image", imageSchema);
+const Image = mongoose.model("Image", imageSchema);
 
 module.exports = Image;
